@@ -1,0 +1,11 @@
+{
+  "name": "syntix",
+  "version": "1.0.0",
+  "description": "SYNTIX Root",
+  "scripts": {
+    "dev": "npm run dev --prefix syntix-app",
+    "build": "npm run build --prefix syntix-app",
+    "start": "npm run start --prefix syntix-app",
+    "install": "npm install --prefix syntix-app"
+  }
+}
