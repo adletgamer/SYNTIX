@@ -62,7 +62,7 @@ export const Hero = () => {
         </motion.div>
         <motion.div 
           animate={{ opacity: [0, 1, 0] }}
-          transition={{ duration: 0.8, repeat: Infinity, ease: "steps(2)", delay: 0.5 }}
+          transition={{ duration: 0.8, repeat: Infinity, ease: "linear", delay: 0.5 }}
           className="absolute font-mono text-[10px] text-gray-400 bottom-[25%] left-1/2 -translate-x-1/2"
         >
           _computing_proof
