@@ -24,6 +24,7 @@ export default function AboutPage() {
               name="Alejandra Catacora"
               role="Cybersecurity & Blockchain Infra"
               description="Specializing in Cybersecurity Engineering and Blockchain Infrastructure. Obsessed with building 'Trustless Health Data' systems where privacy is cryptographically guaranteed, not just promised."
+              imageUrl="/alejandra.png"
               github="https://github.com/"
               linkedin="https://linkedin.com/"
             />
@@ -32,6 +33,7 @@ export default function AboutPage() {
               name="Kushaan A Ksheerasagar"
               role="Genomics & Bio-Algorithms"
               description="Biologist focused on genetic algorithms and computational biology. Bridging the gap between raw biological sequences and verifiable, privacy-preserving clinical insights."
+              imageUrl="/kushaan.jpg"
               github="https://github.com/"
               linkedin="https://linkedin.com/"
             />

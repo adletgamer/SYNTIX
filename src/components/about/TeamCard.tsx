@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const GithubIcon = ({ size = 20 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -20,17 +21,29 @@ interface TeamCardProps {
   name: string;
   role: string;
   description: string;
+  imageUrl?: string;
   github?: string;
   linkedin?: string;
 }
 
-export const TeamCard: React.FC<TeamCardProps> = ({ name, role, description, github, linkedin }) => {
+export const TeamCard: React.FC<TeamCardProps> = ({ name, role, description, imageUrl, github, linkedin }) => {
   return (
-    <div className="group relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-biomarker/50 hover:shadow-[0_0_30px_rgba(34,197,94,0.1)] overflow-hidden">
+    <div className="group relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-biomarker/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.1)] overflow-hidden">
       {/* Subtle top border glow on hover */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-biomarker to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="flex flex-col h-full">
+        {imageUrl && (
+          <div className="mb-8 relative w-full aspect-square rounded-xl overflow-hidden border border-white/5 bg-black/40 group-hover:border-biomarker/30 transition-colors duration-300">
+            <Image 
+              src={imageUrl} 
+              alt={name} 
+              fill 
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105" 
+            />
+          </div>
+        )}
         <div className="mb-6">
           <h3 className="text-2xl font-bold text-white mb-2">{name}</h3>
           <p className="font-mono text-sm text-indigo uppercase tracking-wider">{role}</p>

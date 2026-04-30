@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         hero: "#050813",
         global: "#FFFFFF",
-        biomarker: "#22C55E",
+        biomarker: "#00E5FF",
         indigo: "#6366F1",
       },
       fontFamily: {

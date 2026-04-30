@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SYNTIX Layer",
+  title: "SYNTIX",
   description: "Biological Sovereignty via Web3",
 };
 
