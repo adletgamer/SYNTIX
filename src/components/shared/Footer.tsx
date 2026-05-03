@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const ECOSYSTEM_TECHS = [
   { name: 'Story Protocol', abbr: 'SP' },
@@ -12,6 +13,9 @@ const ECOSYSTEM_TECHS = [
 ];
 
 export const Footer = () => {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/dashboard')) return null;
+
   return (
     <footer className="bg-hero text-gray-400 border-t border-white/10">
 

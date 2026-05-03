@@ -1,8 +1,15 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ConnectBioWallet } from '../auth/ConnectBioWallet';
 
 export const Navbar = () => {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/dashboard')) return null;
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 bg-hero/90 backdrop-blur-md border-b border-white/5">
       <Link href="/" className="flex items-center gap-4 text-white font-bold text-xl tracking-wide group">
@@ -21,9 +28,7 @@ export const Navbar = () => {
         <li><Link href="/#privacy-demo" className="hover:text-biomarker transition-colors">Demo</Link></li>
         <li><Link href="/about" className="hover:text-biomarker transition-colors text-white">About Us</Link></li>
       </ul>
-      <a href="#cta" className="font-mono text-xs uppercase tracking-widest text-hero bg-biomarker hover:bg-cyan-400 px-6 py-3 rounded-sm transition-all font-semibold">
-        Connect Wallet
-      </a>
+      <ConnectBioWallet />
     </nav>
   );
 };

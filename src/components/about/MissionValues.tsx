@@ -28,7 +28,7 @@ export const MissionValues = () => {
               <h2 className="text-3xl font-bold text-white tracking-tight">Our Mission</h2>
             </div>
             <p className="text-xl text-gray-300 leading-relaxed font-light">
-              To build the world's most secure infrastructure for biological data, empowering individuals to own and monetize their genomic and clinical identity through zero-knowledge proofs.
+              We exist to decentralize the global flow of health intelligence. By creating a secure and transparent infrastructure, we empower researchers to accelerate biological discovery at an unprecedented scale without ever compromising individual privacy or human sovereignty.
             </p>
           </motion.div>
 
@@ -46,7 +46,7 @@ export const MissionValues = () => {
               <h2 className="text-3xl font-bold text-white tracking-tight">Our Vision</h2>
             </div>
             <p className="text-xl text-gray-300 leading-relaxed font-light">
-              A future where health sovereignty is a human right, and biological discovery is accelerated by a global, decentralized, and privacy-preserving data layer.
+              We exist to architect the world's first privacy-preserving biological intelligence layer. We are transforming health data from a fragmented liability into a catalyst for medical progress, ensuring every human possesses absolute ownership over their biological IP and genetic truth.
             </p>
           </motion.div>
         </div>
