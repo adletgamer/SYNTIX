@@ -16,7 +16,7 @@ export default function AuthPage() {
 
   const stepVariants = {
     enter: { opacity: 0, x: 20 },
-    center: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+    center: { opacity: 1, x: 0, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as [number,number,number,number] } },
     exit: { opacity: 0, x: -20, transition: { duration: 0.3 } },
   };
 
