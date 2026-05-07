@@ -133,13 +133,7 @@ const TestimonialCard = ({ t, isActive }: CardProps) => (
 
     {/* Author row */}
     <div className="relative z-10 flex items-center gap-4">
-      {/* Avatar */}
-      <div
-        className="w-12 h-12 rounded-full flex items-center justify-center font-semibold text-sm text-white flex-shrink-0 shadow-lg"
-        style={{ background: `linear-gradient(135deg, ${t.avatarFrom}, ${t.avatarTo})` }}
-      >
-        {t.initials}
-      </div>
+
 
       {/* Name + role */}
       <div className="min-w-0">
