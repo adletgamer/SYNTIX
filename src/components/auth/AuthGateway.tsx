@@ -90,7 +90,7 @@ export const AuthGateway: React.FC<AuthGatewayProps> = ({ isOpen, onClose, onSuc
           </div>
 
           {/* Modal Content Area */}
-          <div className="relative min-h-[400px] p-8 md:p-12 overflow-hidden">
+          <div className="relative min-h-[480px] flex flex-col justify-center p-6 md:p-10 overflow-y-auto">
             {/* Ambient Background Glow */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
               <div className="absolute top-1/2 left-1/4 h-[300px] w-[300px] -translate-y-1/2 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[100px]" />
@@ -106,7 +106,7 @@ export const AuthGateway: React.FC<AuthGatewayProps> = ({ isOpen, onClose, onSuc
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="relative z-10 flex flex-col items-center h-full"
+                  className="relative z-10 flex flex-col items-center w-full"
                 >
                   <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-light text-white mb-3">
@@ -117,11 +117,11 @@ export const AuthGateway: React.FC<AuthGatewayProps> = ({ isOpen, onClose, onSuc
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 w-full max-w-[850px] px-2 md:px-0">
                     {/* GUARDIAN CARD */}
                     <button
                       onClick={() => handleRoleSelect('guardian')}
-                      className="group relative flex flex-col items-center text-center p-8 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md transition-all duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/[0.03] hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,0.2)]"
+                      className="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md transition-all duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/[0.05] hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(34,211,238,0.2)]"
                     >
                       <div className="mb-6 rounded-full bg-cyan-400/10 p-4 text-cyan-400 transition-transform duration-300 group-hover:scale-110">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -142,7 +142,7 @@ export const AuthGateway: React.FC<AuthGatewayProps> = ({ isOpen, onClose, onSuc
                     {/* CURATOR CARD */}
                     <button
                       onClick={() => handleRoleSelect('curator')}
-                      className="group relative flex flex-col items-center text-center p-8 rounded-xl border border-white/10 bg-white/[0.02] backdrop-blur-md transition-all duration-300 hover:border-indigo-400/50 hover:bg-indigo-400/[0.03] hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(99,102,241,0.2)]"
+                      className="group relative flex flex-col items-center text-center p-8 md:p-10 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md transition-all duration-300 hover:border-indigo-400/50 hover:bg-indigo-400/[0.05] hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(99,102,241,0.2)]"
                     >
                       <div className="mb-6 rounded-full bg-indigo-400/10 p-4 text-indigo-400 transition-transform duration-300 group-hover:scale-110">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
