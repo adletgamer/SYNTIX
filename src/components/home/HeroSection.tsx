@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { AuthGateway } from '../auth/AuthGateway';
 
 const TICKER_ITEMS = [
   'Zero-Knowledge Proofs', 'FHE Computation', 'IP-NFT Minting',
@@ -97,7 +96,7 @@ const InfiniteTicker = () => {
 
 const HeroSection = () => {
   const [wave, setWave] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
+
   const router = useRouter();
   const { scrollY } = useScroll();
   const contentOpacity = useTransform(scrollY, [0, 340], [1, 0.25]);
@@ -108,25 +107,12 @@ const HeroSection = () => {
     setWave(true);
     setTimeout(() => {
       setWave(false);
-      setIsAuthOpen(true);
+      router.push('/auth');
     }, 600);
-  };
-
-  const handleAuthSuccess = (role: 'guardian' | 'curator' | null) => {
-    if (role === 'guardian') {
-      router.push('/dashboard/guardian');
-    } else if (role === 'curator') {
-      router.push('/dashboard/institute');
-    }
   };
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center bg-hero overflow-hidden">
-      <AuthGateway 
-        isOpen={isAuthOpen} 
-        onClose={() => setIsAuthOpen(false)} 
-        onSuccess={handleAuthSuccess} 
-      />
       <GridBackground />
       <motion.div style={{ opacity: contentOpacity, y: contentY }} className="relative z-10 flex flex-col items-center">
 
@@ -183,7 +169,7 @@ const HeroSection = () => {
               </AnimatePresence>
             </div>
             <button 
-              onClick={(e) => { e.preventDefault(); setIsAuthOpen(true); }}
+              onClick={(e) => { e.preventDefault(); router.push('/auth'); }}
               className="group inline-flex items-center gap-2.5 px-8 py-4 border border-white/10 bg-white/[0.04] text-white text-sm uppercase tracking-widest rounded-sm backdrop-blur-sm hover:bg-white/[0.09] hover:border-white/[0.2] transition-all duration-300"
             >
               <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true" className="flex-shrink-0 text-indigo">
