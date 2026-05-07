@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Fingerprint } from 'lucide-react';
 
-type FlowStep = 'path-selector' | 'onboarding-curator' | 'connecting' | 'verifying';
+type FlowStep = 'path-selector' | 'onboarding-guardian' | 'onboarding-curator' | 'connecting' | 'verifying';
 type Role = 'guardian' | 'curator' | null;
 
 export default function AuthPage() {
@@ -39,6 +39,8 @@ export default function AuthPage() {
     setSelectedRole(role);
     if (role === 'curator') {
       setStep('onboarding-curator');
+    } else if (role === 'guardian') {
+      setStep('onboarding-guardian');
     } else {
       startConnectionFlow(role);
     }
@@ -47,6 +49,11 @@ export default function AuthPage() {
   const handleCuratorSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     startConnectionFlow('curator');
+  };
+
+  const handleGuardianSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    startConnectionFlow('guardian');
   };
 
   return (
@@ -146,6 +153,61 @@ export default function AuthPage() {
             </motion.div>
           )}
 
+          {/* SCREEN 1.4: GUARDIAN ONBOARDING (KYC) */}
+          {step === 'onboarding-guardian' && (
+            <motion.div
+              key="onboarding-guardian"
+              variants={stepVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="flex flex-col items-center w-full max-w-xl"
+            >
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-light text-white mb-4">Identity Verification</h2>
+                <p className="text-gray-400 text-sm">
+                  To protect your biological IP and prevent phishing, please verify your sovereign identity. 
+                  This data is encrypted locally and never leaves your device unencrypted.
+                </p>
+              </div>
+
+              <form onSubmit={handleGuardianSubmit} className="w-full bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-10 backdrop-blur-xl shadow-2xl">
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Full Legal Name</label>
+                      <input required type="text" placeholder="John Doe" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Country of Residence</label>
+                      <input required type="text" placeholder="e.g. Switzerland" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 transition-colors" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">National ID / Passport Number</label>
+                    <input required type="text" placeholder="Document ID for IP-NFT Minting" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-400 transition-colors" />
+                  </div>
+                  
+                  <div className="flex items-start gap-3 p-4 rounded-xl bg-cyan-400/10 border border-cyan-400/20">
+                    <input required type="checkbox" id="compliance-guardian" className="mt-1 accent-cyan-400" />
+                    <label htmlFor="compliance-guardian" className="text-xs text-gray-400 leading-relaxed">
+                      I confirm that this is my true biological identity. I understand that misrepresenting my identity for IP-NFT creation violates the SYNTIX protocol terms.
+                    </label>
+                  </div>
+                </div>
+
+                <div className="mt-10 flex gap-4">
+                  <button type="button" onClick={() => setStep('path-selector')} className="flex-1 px-6 py-3 rounded-xl font-semibold text-gray-400 bg-white/5 hover:bg-white/10 transition-colors">
+                    Back
+                  </button>
+                  <button type="submit" className="flex-2 w-full px-6 py-3 rounded-xl font-semibold text-cyan-900 bg-cyan-400 hover:bg-cyan-300 transition-colors shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                    Verify & Connect BioWallet
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          )}
+
           {/* SCREEN 1.5: CURATOR ONBOARDING (KYB/KYC) */}
           {step === 'onboarding-curator' && (
             <motion.div
@@ -165,6 +227,16 @@ export default function AuthPage() {
 
               <form onSubmit={handleCuratorSubmit} className="w-full bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-10 backdrop-blur-xl shadow-2xl">
                 <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Legal Representative</label>
+                      <input required type="text" placeholder="Full Legal Name" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Jurisdiction / Country</label>
+                      <input required type="text" placeholder="e.g. United States" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                    </div>
+                  </div>
                   <div>
                     <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Organization Name</label>
                     <input required type="text" placeholder="e.g. Stanford Medical Research" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
