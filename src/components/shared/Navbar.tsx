@@ -3,12 +3,13 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ConnectBioWallet } from '../auth/ConnectBioWallet';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const Navbar = () => {
   const pathname = usePathname();
-  if (pathname?.startsWith('/dashboard')) return null;
+  const router = useRouter();
+  
+  if (pathname?.startsWith('/dashboard') || pathname?.startsWith('/auth')) return null;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 bg-hero/90 backdrop-blur-md border-b border-white/5">
@@ -28,7 +29,12 @@ export const Navbar = () => {
         <li><Link href="/#privacy-demo" className="hover:text-biomarker transition-colors">Demo</Link></li>
         <li><Link href="/about" className="hover:text-biomarker transition-colors text-white">About Us</Link></li>
       </ul>
-      <ConnectBioWallet />
+      <button 
+        onClick={() => router.push('/auth')}
+        className="font-mono text-xs uppercase tracking-widest text-hero bg-biomarker hover:bg-cyan-400 px-6 py-3 rounded-sm transition-all font-semibold"
+      >
+        Connect Bio-Wallet
+      </button>
     </nav>
   );
 };
