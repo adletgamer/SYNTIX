@@ -237,17 +237,37 @@ export default function AuthPage() {
                       <input required type="text" placeholder="e.g. United States" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Organization Name</label>
-                    <input required type="text" placeholder="e.g. Stanford Medical Research" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Organization Name</label>
+                      <input required type="text" placeholder="e.g. Stanford Medical Research" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Institutional Email</label>
+                      <input required type="email" placeholder="researcher@university.edu" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Institutional Email</label>
-                    <input required type="email" placeholder="researcher@university.edu" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Registration No. (EIN / ID)</label>
+                      <input required type="text" placeholder="Official Registration ID" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Compliance Certification</label>
+                      <select required className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-400 transition-colors appearance-none">
+                        <option value="" disabled selected>Select Certification Standard</option>
+                        <option value="hipaa">HIPAA Compliance (US)</option>
+                        <option value="gdpr">GDPR Adherence (EU)</option>
+                        <option value="iso27001">ISO/IEC 27001 Certified</option>
+                        <option value="other">Other / IRB Approved</option>
+                      </select>
+                    </div>
                   </div>
+
                   <div>
                     <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Research Intent (Encrypted)</label>
-                    <textarea required placeholder="Briefly describe the purpose of your data access request..." rows={3} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors resize-none" />
+                    <textarea required placeholder="Briefly describe the purpose of your data access request, specific biomarkers needed, and methodology..." rows={3} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors resize-none" />
                   </div>
                   
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-indigo-400/10 border border-indigo-400/20">
