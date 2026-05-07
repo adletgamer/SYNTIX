@@ -122,8 +122,17 @@ const IPNFTVault = () => {
   ];
 
   return (
-    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6 h-full flex flex-col relative">
-      <div className="flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-widest mb-6">
+    <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6 h-full flex flex-col relative overflow-hidden">
+      {/* Custodial Trust Banner */}
+      <div className="absolute top-0 left-0 w-full bg-biomarker/10 border-b border-biomarker/20 px-6 py-2 flex items-center justify-between">
+        <div className="flex items-center gap-2 text-[10px] font-mono text-biomarker uppercase tracking-widest">
+          <Shield size={12} />
+          Custodial FHE Vault
+        </div>
+        <span className="text-[10px] text-gray-400 font-mono">Your keys are securely managed by SYNTIX HSMs.</span>
+      </div>
+
+      <div className="mt-8 flex items-center gap-2 text-xs font-mono text-gray-400 uppercase tracking-widest mb-6">
         <Database size={14} className="text-indigo" />
         IP-NFT Vault
       </div>
@@ -132,30 +141,35 @@ const IPNFTVault = () => {
         {assets.map((asset, i) => (
           <div key={i} className="group bg-black/40 border border-white/5 hover:border-white/20 rounded-xl p-4 transition-all flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
                 <FileCode2 size={18} className={asset.type === 'DNA' ? 'text-biomarker' : 'text-indigo'} />
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white">{asset.name}</h4>
                 <div className="text-xs font-mono text-gray-500 mt-1 flex items-center gap-2">
-                  <span>Contract: {asset.id}</span>
+                  <span>Vault ID: {asset.id}</span>
                   <span className="w-1 h-1 rounded-full bg-gray-500" />
                   <span className={asset.status === 'Active' ? 'text-green-400' : 'text-yellow-400'}>{asset.status}</span>
                 </div>
               </div>
             </div>
-            <button className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white text-xs font-mono px-4 py-2 rounded-lg flex items-center gap-2 border border-white/10">
-              <Share2 size={14} />
-              License Data
-            </button>
+            <div className="flex items-center gap-3">
+              <span className="text-[10px] text-gray-500 font-mono hidden md:inline-block">Custodial Sync</span>
+              <button className="bg-white/10 hover:bg-white/20 text-white text-xs font-mono px-4 py-2 rounded-lg flex items-center gap-2 border border-white/10 transition-colors">
+                <Share2 size={14} />
+                License Data
+              </button>
+            </div>
           </div>
         ))}
       </div>
       
       <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-gray-500 font-mono">
-        <span>Powered by Story Protocol</span>
-        <div className="flex items-center gap-1 text-biomarker bg-biomarker/10 px-2 py-1 rounded">
-          <Shield size={12} /> Protected Asset
+        <div className="flex items-center gap-2">
+          <span>Powered by Story Protocol</span>
+        </div>
+        <div className="flex items-center gap-1.5 text-biomarker bg-biomarker/10 px-3 py-1.5 rounded-full border border-biomarker/20">
+          <Shield size={12} /> 100% Encrypted Custody
         </div>
       </div>
     </div>

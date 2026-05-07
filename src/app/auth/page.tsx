@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Fingerprint } from 'lucide-react';
 
-type FlowStep = 'path-selector' | 'connecting' | 'verifying';
+type FlowStep = 'path-selector' | 'onboarding-curator' | 'connecting' | 'verifying';
 type Role = 'guardian' | 'curator' | null;
 
 export default function AuthPage() {
@@ -20,10 +20,8 @@ export default function AuthPage() {
     exit: { opacity: 0, x: -20, transition: { duration: 0.3 } },
   };
 
-  const handleRoleSelect = (role: Role) => {
-    setSelectedRole(role);
+  const startConnectionFlow = (role: Role) => {
     setStep('connecting');
-    
     // Simulate connection flow
     setTimeout(() => {
       setStep('verifying');
@@ -35,6 +33,20 @@ export default function AuthPage() {
         }
       }, 2000);
     }, 2000);
+  };
+
+  const handleRoleSelect = (role: Role) => {
+    setSelectedRole(role);
+    if (role === 'curator') {
+      setStep('onboarding-curator');
+    } else {
+      startConnectionFlow(role);
+    }
+  };
+
+  const handleCuratorSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    startConnectionFlow('curator');
   };
 
   return (
@@ -131,6 +143,58 @@ export default function AuthPage() {
                   </div>
                 </button>
               </div>
+            </motion.div>
+          )}
+
+          {/* SCREEN 1.5: CURATOR ONBOARDING (KYB/KYC) */}
+          {step === 'onboarding-curator' && (
+            <motion.div
+              key="onboarding-curator"
+              variants={stepVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="flex flex-col items-center w-full max-w-xl"
+            >
+              <div className="text-center mb-10">
+                <h2 className="text-3xl font-light text-white mb-4">Institutional Verification</h2>
+                <p className="text-gray-400 text-sm">
+                  SYNTIX operates a compliant custodial vault. Please provide your institutional details to request a secure node.
+                </p>
+              </div>
+
+              <form onSubmit={handleCuratorSubmit} className="w-full bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-10 backdrop-blur-xl shadow-2xl">
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Organization Name</label>
+                    <input required type="text" placeholder="e.g. Stanford Medical Research" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Institutional Email</label>
+                    <input required type="email" placeholder="researcher@university.edu" className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono text-gray-500 uppercase tracking-widest mb-2">Research Intent (Encrypted)</label>
+                    <textarea required placeholder="Briefly describe the purpose of your data access request..." rows={3} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-indigo-400 transition-colors resize-none" />
+                  </div>
+                  
+                  <div className="flex items-start gap-3 p-4 rounded-xl bg-indigo-400/10 border border-indigo-400/20">
+                    <input required type="checkbox" id="compliance" className="mt-1 accent-indigo-400" />
+                    <label htmlFor="compliance" className="text-xs text-gray-400 leading-relaxed">
+                      I acknowledge that all computation on SYNTIX is performed blindly via FHE. Raw genomic data will never be decrypted or exported to our servers.
+                    </label>
+                  </div>
+                </div>
+
+                <div className="mt-10 flex gap-4">
+                  <button type="button" onClick={() => setStep('path-selector')} className="flex-1 px-6 py-3 rounded-xl font-semibold text-gray-400 bg-white/5 hover:bg-white/10 transition-colors">
+                    Back
+                  </button>
+                  <button type="submit" className="flex-2 w-full px-6 py-3 rounded-xl font-semibold text-indigo-900 bg-indigo-400 hover:bg-indigo-300 transition-colors shadow-[0_0_20px_rgba(99,102,241,0.3)]">
+                    Submit & Connect Node
+                  </button>
+                </div>
+              </form>
             </motion.div>
           )}
 
