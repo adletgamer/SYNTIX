@@ -60,10 +60,8 @@ export const AuthGateway: React.FC<AuthGatewayProps> = ({ isOpen, onClose, onSuc
         animate="visible"
         exit="hidden"
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 sm:p-6"
+        onClick={onClose}
       >
-        {/* Click outside to close */}
-        <div className="absolute inset-0" onClick={onClose} />
-
         <motion.div
           variants={modalVariants}
           initial="hidden"
