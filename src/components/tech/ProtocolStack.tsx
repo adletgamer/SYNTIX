@@ -878,9 +878,7 @@ export const ProtocolStack = () => {
             transition={{ duration: 0.7 }}
             className="text-center mb-20"
           >
-            <div className="font-mono text-xs text-cyan-400 uppercase tracking-[0.3em] mb-4">
-              Sentinel Architecture
-            </div>
+
             <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
               The SYNTIX{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
@@ -900,13 +898,7 @@ export const ProtocolStack = () => {
             ))}
           </div>
 
-          {/* Architecture blueprint diagram */}
-          <div className="mb-6">
-            <div className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-4 text-center">
-              System Architecture · Encrypted Data Flow
-            </div>
-            <ArchDiagram />
-          </div>
+
         </div>
       </section>
 
@@ -914,9 +906,7 @@ export const ProtocolStack = () => {
       <section id="privacy-demo" className="py-24 border-t border-white/5">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-14">
-            <div className="font-mono text-xs text-cyan-400 uppercase tracking-[0.3em] mb-4">
-              MVP Kill Feature
-            </div>
+
             <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-4">
               Blind Computation,{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
