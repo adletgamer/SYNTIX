@@ -63,46 +63,7 @@ export const Pgx = () => {
           {/* Left: abstract graphic */}
           <FadeIn delay={0.1}>
             <div className="relative aspect-[4/3] bg-gray-50 border border-gray-100 overflow-hidden">
-              {/* Grayscale geometric visualization — no external image needed */}
-              <svg viewBox="0 0 600 450" className="w-full h-full" preserveAspectRatio="xMidYMid slice">
-                {/* Background grid */}
-                <defs>
-                  <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#E5E7EB" strokeWidth="0.5"/>
-                  </pattern>
-                </defs>
-                <rect width="600" height="450" fill="url(#grid)"/>
-
-                {/* Central siloed structure */}
-                <rect x="230" y="80" width="140" height="280" rx="4" fill="#F3F4F6" stroke="#D1D5DB" strokeWidth="1"/>
-                <text x="300" y="150" textAnchor="middle" fill="#9CA3AF" fontSize="11" fontFamily="monospace">BIOBANK</text>
-                <text x="300" y="170" textAnchor="middle" fill="#9CA3AF" fontSize="9" fontFamily="monospace">CENTRALISED SILO</text>
-
-                {/* Data nodes flowing in */}
-                {[[80,100],[60,180],[90,260],[100,340]].map(([x,y],i) => (
-                  <g key={i}>
-                    <circle cx={x} cy={y} r="18" fill="#F9FAFB" stroke="#E5E7EB"/>
-                    <text x={x} y={y+4} textAnchor="middle" fill="#9CA3AF" fontSize="9" fontFamily="monospace">DNA</text>
-                    <line x1={x+18} y1={y} x2="230" y2={150+i*40} stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 3"/>
-                  </g>
-                ))}
-
-                {/* Locked output */}
-                <rect x="430" y="170" width="110" height="60" rx="4" fill="#F3F4F6" stroke="#D1D5DB"/>
-                <line x1="370" y1="220" x2="430" y2="200" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="4 3"/>
-                <text x="485" y="196" textAnchor="middle" fill="#9CA3AF" fontSize="9" fontFamily="monospace">$17/GENOME</text>
-                <text x="485" y="212" textAnchor="middle" fill="#9CA3AF" fontSize="9" fontFamily="monospace">SOLD AT AUCTION</text>
-                <text x="485" y="225" textAnchor="middle" fill="#D1D5DB" fontSize="9" fontFamily="monospace">OWNER: 0 CONTROL</text>
-
-                {/* X marks */}
-                {[[300,240],[300,270],[300,300]].map(([x,y],i) => (
-                  <g key={i}>
-                    <circle cx={x} cy={y} r="12" fill="#FEF2F2" stroke="#FECACA"/>
-                    <text x={x} y={y+4} textAnchor="middle" fill="#EF4444" fontSize="12">×</text>
-                  </g>
-                ))}
-                <text x="300" y="350" textAnchor="middle" fill="#9CA3AF" fontSize="9" fontFamily="monospace">NO AUDIT TRAIL · NO ROYALTY · NO CONSENT</text>
-              </svg>
+              <img src="/problem-image.png" alt="Problem illustration" className="w-full h-full object-cover" />
             </div>
           </FadeIn>
 
