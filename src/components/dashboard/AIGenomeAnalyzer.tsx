@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 /**
  * ============================================================================
- * 🧬 AI GENOME ANALYZER - INTEGRATION POINT
+ * ◈ AI GENOME ANALYZER - INTEGRATION POINT
  * ============================================================================
  * 
  * TODO PARA EL INTEGRADOR (TU AMIGO):
@@ -29,7 +29,7 @@ export const AIGenomeAnalyzer: React.FC<AIGenomeAnalyzerProps> = ({
     setIsAnalyzing(true);
     
     try {
-      // 🚀 AQUÍ VA TU LLAMADA A LA IA O BACKEND DE ANÁLISIS
+      // → AQUÍ VA TU LLAMADA A LA IA O BACKEND DE ANÁLISIS
       // const response = await runMyGenomeAIModel(encryptedGenomeData);
       
       // Simulando tiempo de computación de la IA

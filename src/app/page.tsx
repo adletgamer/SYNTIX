@@ -1,6 +1,6 @@
 import { HeroSection, HowItWorks, FAQSection, Testimonials } from '@/components/home';
 import { Pgx } from '@/components/pgx';
-import { Tech, ProtocolStack } from '@/components/tech';
+import { Tech, ProtocolStack, SchemaValidator } from '@/components/tech';
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <HeroSection />
       <Pgx />
       <ProtocolStack />
+      <SchemaValidator />
       <Tech />
       <Testimonials />
       <HowItWorks />

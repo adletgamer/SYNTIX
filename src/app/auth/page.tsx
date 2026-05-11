@@ -312,7 +312,7 @@ export default function AuthPage() {
                   className={`absolute inset-3 rounded-full border-b-2 border-l-2 border-transparent ${selectedRole === 'guardian' ? 'border-b-cyan-400 border-l-cyan-400/30' : 'border-b-indigo-400 border-l-indigo-400/30'}`}
                 />
                 <div className="absolute inset-0 flex items-center justify-center text-4xl">
-                  {selectedRole === 'guardian' ? '🔐' : '🔬'}
+                  {selectedRole === 'guardian' ? '⬡' : '◈'}
                 </div>
               </div>
               <h2 className="text-3xl font-light text-white mb-4">Awaiting Signature</h2>

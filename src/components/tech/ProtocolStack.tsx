@@ -17,7 +17,7 @@ const LAYERS = [
     hex: 'biomarker',
     glow: 'rgba(0,229,255,0.18)',
     border: 'rgba(0,229,255,0.35)',
-    icon: '🔒',
+    icon: 'lock',
     badge: 'FHE Active',
   },
   {
@@ -32,7 +32,7 @@ const LAYERS = [
     hex: 'indigo',
     glow: 'rgba(129,140,248,0.18)',
     border: 'rgba(129,140,248,0.35)',
-    icon: '🧬',
+    icon: 'dna',
     badge: 'IP-NFT Minted',
   },
   {
@@ -47,7 +47,7 @@ const LAYERS = [
     hex: 'white',
     glow: 'rgba(255,255,255,0.08)',
     border: 'rgba(255,255,255,0.18)',
-    icon: '⚡',
+    icon: 'bolt',
     badge: 'Type-Safe',
   },
 ];
@@ -88,7 +88,7 @@ function LayerCard({ layer, index }: { layer: typeof LAYERS[0]; index: number })
 
       {/* Tier label */}
       <div
-        className="font-mono text-xs font-bold tracking-[0.2em] uppercase"
+        className=" text-xs font-bold tracking-[0.2em] uppercase"
         style={{ color: layer.color }}
       >
         {layer.tier}
@@ -100,7 +100,7 @@ function LayerCard({ layer, index }: { layer: typeof LAYERS[0]; index: number })
           <span className="text-2xl">{layer.icon}</span>
           <div>
             <h3 className="text-xl font-extrabold text-white leading-tight">{layer.label}</h3>
-            <p className="font-mono text-xs mt-1" style={{ color: layer.color }}>
+            <p className=" text-xs mt-1" style={{ color: layer.color }}>
               {layer.sublabel}
             </p>
           </div>
@@ -112,7 +112,7 @@ function LayerCard({ layer, index }: { layer: typeof LAYERS[0]; index: number })
         {layer.tech.map((t) => (
           <span
             key={t}
-            className="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full"
+            className=" text-[10px] uppercase tracking-widest px-3 py-1 rounded-full"
             style={{
               background: `${layer.color}15`,
               border: `1px solid ${layer.color}40`,
@@ -132,7 +132,7 @@ function LayerCard({ layer, index }: { layer: typeof LAYERS[0]; index: number })
 
       {/* Status badge */}
       <div
-        className="self-start font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-sm flex items-center gap-2"
+        className="self-start  text-[10px] uppercase tracking-widest px-3 py-1 rounded-sm flex items-center gap-2"
         style={{
           background: `${layer.color}10`,
           border: `1px solid ${layer.color}50`,
@@ -246,12 +246,12 @@ function TerminalTooltip({ nodeId, color }: { nodeId: string; color: string }) {
 
 /* ─── Node icons ─────────────────────────────────────────────── */
 const NODE_ICONS: Record<string, string> = {
-  user:   '💻',
-  fhe:    '🔐',
+  user:   '○',
+  fhe:    '⬡',
   zkp:    '✅',
-  ai:     '🧠',
-  ip:     '📜',
-  result: '💊',
+  ai:     '◈',
+  ip:     '◇',
+  result: '✦',
 };
 
 /* ─── Individual node with hover callout ────────────────────── */
@@ -530,7 +530,7 @@ function ArchDiagram() {
 
       {/* ── BLUEPRINT watermark with glitch ─────────────────── */}
       <div
-        className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-widest select-none"
+        className="absolute top-4 left-4  text-[10px] uppercase tracking-widest select-none"
         style={{
           color: glitch ? '#00E5FF' : 'rgba(0,229,255,0.45)',
           fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
@@ -769,7 +769,7 @@ function PrivacyToggler() {
         <div className="p-6 space-y-3">
           {/* Panel header */}
           <div className="flex items-center gap-2.5 mb-5">
-            <span className="text-base">🧬</span>
+            <span className="text-base text-biomarker">◈</span>
             <span className="text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold">You See</span>
           </div>
 
@@ -830,7 +830,7 @@ function PrivacyToggler() {
         }}
       >
         <div className="flex items-center gap-2.5">
-          <span className="text-base">{fheActive ? '🛡️' : '🔓'}</span>
+          <span className="text-base">{fheActive ? '■' : '○'}</span>
           <span
             className="text-[10px] uppercase tracking-widest font-medium"
             style={{ color: fheActive ? 'rgba(0,229,255,0.75)' : '#4b5563' }}
